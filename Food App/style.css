@@ -1,0 +1,45 @@
+.nav-items {
+    display: flex;
+    justify-content: space-between;
+    border: solid black 1px;
+}
+.nav-items > img {
+    width: 70px;
+    margin: 10px;
+}
+
+.nav-tags {
+    margin: 10px;
+}
+
+.nav-tags > ul {
+    display: flex;
+}
+
+.nav-tags > ul > li {
+    padding: 10px;
+    list-style: none;
+    font-size: 24px;
+}
+
+.res-card {
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+    background-color: rgba(207, 200, 200, 0.89);
+}
+
+.res-card:hover {
+    border: solid black 1px;
+}
+
+.res-card > img {
+    height: 150px;
+    width: 100%;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
