@@ -37,6 +37,7 @@
 .res-card > img {
     height: 150px;
     width: 100%;
+    text-decoration: none;
 }
 
 .cards {
@@ -83,4 +84,15 @@
     margin: 10px;
     padding: 5px;
     cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.user-card {
+    padding: 10px;
+    border: solid black 1px;
+    margin: 5px;
 }

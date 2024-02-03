@@ -1,17 +1,14 @@
 import { CDN_URL } from "../utils/constants";
 
 const Card = (props) => {
-    const data = props.data;
-    const name = data?.info?.name;
-    const imageId = data?.info?.cloudinaryImageId;
-    const cost = data?.info?.costForTwo;
-    const rating = data?.info?.avgRating;
+    const { name, cloudinaryImageId, costForTwo, avgRating, sla } = props?.data?.info;
     return (
         <div className="res-card">
-            <img src={CDN_URL+imageId}/>
+            <img src={CDN_URL+cloudinaryImageId}/>
             <h2>{name}</h2>
-            <h3>{cost}</h3>
-            <h3>{rating} stars</h3>
+            <h3>{costForTwo}</h3>
+            <h3>{avgRating} stars</h3>
+            <h3>{sla?.slaString}</h3>
         </div>
     )
 }
