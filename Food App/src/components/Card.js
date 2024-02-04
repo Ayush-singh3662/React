@@ -10,7 +10,7 @@ const Card = (props) => {
             <h3>{avgRating} stars</h3>
             <h3>{sla?.slaString}</h3>
         </div>
-    )
+    );
 }
 
 export default Card;
