@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card, {promotedCard} from "./Card";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const Promoted = promotedCard(Card);
 
   useEffect(() => {
     fetchData();
@@ -33,18 +34,19 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div>
-      <div className="filter">
+      {console.log(listOfRestaurants)};
+      <div className="filter flex m-4">
         <div className="search">
           <input
             type="text"
-            className="search-box"
+            className="search-box border border-black border-solid"
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
             }}
           />
           <button
-            className="search-btn"
+            className="search-btn px-4 py-2 bg-green-100 m-4 rounded-lg shadow-sm hover:shadow-lg"
             onClick={() => {
               const searched = listOfRestaurants.filter((res) =>
                 res?.info?.name.toLowerCase().includes(search.toLowerCase())
@@ -55,8 +57,9 @@ const Body = () => {
             Search
           </button>
         </div>
+        <div className="flex items-center">
         <button
-          className="filter-btn"
+          className="filter-btn px-4 py-2 bg-gray-100 rounded-lg shadow-sm hover:shadow-lg"
           onClick={() => {
             const temp = filteredRestaurants.filter(
               (res) => res?.info?.avgRating > 4
@@ -66,10 +69,12 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        </div>
       </div>
-      <div className="cards">
+      <div className="cards flex flex-wrap m-4 p-4">
         {filteredRestaurants.map((restaurant) => (
-          <Link key={restaurant?.info?.id} to={"/restaurants/"+restaurant?.info?.id}><Card data={restaurant} /></Link>
+          // console.log(restaurant?.info?.isOpen)
+          <Link key={restaurant?.info?.id} to={"/restaurants/"+restaurant?.info?.id}>{restaurant?.info?.isOpen ? (<Promoted data={restaurant}/>) : (<Card data={restaurant} />)}</Link>
         ))}
       </div>
     </div>

@@ -1,4 +1,11 @@
-.nav-items {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+/* .nav-items {
     display: flex;
     justify-content: space-between;
     border: solid black 1px;
@@ -91,4 +98,4 @@ a {
     padding: 10px;
     border: solid black 1px;
     margin: 5px;
-}
+} */
