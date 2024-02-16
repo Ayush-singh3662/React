@@ -8,6 +8,9 @@ import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import Store from "./Redux/Store";
+import Cart from "./components/Cart";
 
 const AppLayout = () => {
   const [userName, setUserName] = useState();
@@ -20,12 +23,14 @@ const AppLayout = () => {
   }, []);
   
   return (
-    <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
-      <div className="header">
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={Store}>
+      <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
+        <div className="header">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -64,6 +69,10 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: "/cart",
+        element: <Cart />
+      }
     ],
     errorElement: <Error />,
   },
