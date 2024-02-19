@@ -83,6 +83,7 @@ const Body = () => {
           <label>UserName : </label>
           <input
             className="border border-black p-1"
+            data-testid="input"
             value={loggedInUser}
             onChange={(e) => setUserName(e.target.value)}
           />
